@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
     <title>PHPUnit (1) 安裝 | zhung&#39;s zone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="InstallationFor a system-wide installation via Composer, you can run:
+    <meta name="description" content="Installation
+For a system-wide installation via Composer, you can run:
 1$ composer global require &quot;phpunit/phpunit=5.5.*&quot;
 In MacOS Sierra, you might need to use sudo for permission issue.
-After install">
+After instal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHPUnit (1) 安裝">
 <meta property="og:url" content="http://ukyouz.github.io/article/php/phpunit-installation.html">
 <meta property="og:site_name" content="zhung's zone">
-<meta property="og:description" content="InstallationFor a system-wide installation via Composer, you can run:
+<meta property="og:description" content="Installation
+For a system-wide installation via Composer, you can run:
 1$ composer global require &quot;phpunit/phpunit=5.5.*&quot;
 In MacOS Sierra, you might need to use sudo for permission issue.
-After install">
+After instal">
 <meta property="og:updated_time" content="2016-11-02T13:48:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHPUnit (1) 安裝">
-<meta name="twitter:description" content="InstallationFor a system-wide installation via Composer, you can run:
+<meta name="twitter:description" content="Installation
+For a system-wide installation via Composer, you can run:
 1$ composer global require &quot;phpunit/phpunit=5.5.*&quot;
 In MacOS Sierra, you might need to use sudo for permission issue.
-After install">
+After instal">
     
 
     
@@ -39,7 +42,7 @@ After install">
     <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
     
     
-        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
     
     
@@ -47,7 +50,7 @@ After install">
 
 </head>
 <body>
-    <div id="container">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
         <header id="header">
     <div id="header-main" class="header-inner">
         <div class="outer">
@@ -147,7 +150,7 @@ After install">
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                4
+                5
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -214,23 +217,29 @@ After install">
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>For a system-wide installation via Composer, you can run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer global require <span class="string">"phpunit/phpunit=5.5.*"</span></span><br></pre></td></tr></table></figure>
+            <h2>Installation</h2>
+<p>For a system-wide installation via Composer, you can run:</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer global require <span class="string">"phpunit/phpunit=5.5.*"</span></span><br></pre></td></tr></table></figure></p>
 <p>In MacOS Sierra, you might need to use <code>sudo</code> for permission issue.</p>
 <p>After installation, you can check PHPUnit version by:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ phpunit --version</span><br><span class="line">PHPUnit 5.5.7 by Sebastian Bergmann and contributors.</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ phpunit --version</span><br><span class="line">PHPUnit 5.5.7 by Sebastian Bergmann and contributors.</span><br></pre></td></tr></table></figure></p>
 <p>If it shows up <code>command not found</code>, try:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ ~/.composer/vendor/bin/phpunit --version</span><br><span class="line">PHPUnit 5.5.7 by Sebastian Bergmann and contributors.</span><br><span class="line"></span><br><span class="line"><span class="comment"># Then you can use alias for short</span></span><br><span class="line">$ <span class="built_in">alias</span> phpunit=<span class="string">'~/.composer/vendor/bin/phpunit'</span></span><br><span class="line">$ phpunit --version</span><br><span class="line">PHPUnit 5.5.7 by Sebastian Bergmann and contributors.</span><br></pre></td></tr></table></figure>
-<h2 id="Test-PHPUnit"><a href="#Test-PHPUnit" class="headerlink" title="Test PHPUnit"></a>Test PHPUnit</h2><p>After installation of PHPUnit, let’s try use it.</p>
-<h3 id="Create-TestClass-php"><a href="#Create-TestClass-php" class="headerlink" title="Create TestClass.php"></a>Create TestClass.php</h3><ol>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ ~/.composer/vendor/bin/phpunit --version</span><br><span class="line">PHPUnit 5.5.7 by Sebastian Bergmann and contributors.</span><br><span class="line"></span><br><span class="line"><span class="comment"># Then you can use alias for short</span></span><br><span class="line">$ <span class="built_in">alias</span> phpunit=<span class="string">'~/.composer/vendor/bin/phpunit'</span></span><br><span class="line">$ phpunit --version</span><br><span class="line">PHPUnit 5.5.7 by Sebastian Bergmann and contributors.</span><br></pre></td></tr></table></figure></p>
+<h2>Test PHPUnit</h2>
+<p>After installation of PHPUnit, let's try use it.</p>
+<h3>Create TestClass.php</h3>
+<ol>
 <li>Make a new class <code>TestSample</code></li>
 <li><code>TestSample</code> inherits from <code>PHPUnit\Framework\TestCase</code>.</li>
 <li>Call method <code>assertEquals</code> for this test.</li>
 </ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSample</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span><br><span class="line"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testSample1</span><span class="params">()</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// assertEquals($a, $b) checks if $a == $b.</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assertEquals(<span class="number">2</span>, <span class="number">1</span>+<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testSample2</span><span class="params">()</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assertEquals(<span class="number">2</span>, <span class="number">1</span><span class="number">-1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Running-Test"><a href="#Running-Test" class="headerlink" title="Running Test"></a>Running Test</h3><p>Save php file, in terminal we can run it by command.<br>Option <code>--color</code> can make syntax highlighting.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ phpunit --color TestSample.php</span><br><span class="line">PHPUnit 4.7.3 by Sebastian Bergmann and contributors.</span><br><span class="line"> </span><br><span class="line">.F</span><br><span class="line"> </span><br><span class="line">Time: 81 ms, Memory: 18.00Mb</span><br><span class="line"> </span><br><span class="line">There was 1 failure:</span><br><span class="line"> </span><br><span class="line">1) TestSample::testSample2</span><br><span class="line">Failed asserting that 0 matches expected 2.</span><br><span class="line"> </span><br><span class="line">/tmp/TestSample.php:10</span><br><span class="line"> </span><br><span class="line">FAILURES!</span><br><span class="line">Tests: 2, Assertions: 2, Failures: 1.</span><br></pre></td></tr></table></figure>
-<h3 id="Explaination-of-Result"><a href="#Explaination-of-Result" class="headerlink" title="Explaination of Result"></a>Explaination of Result</h3><p>Line #4 “.F” tells you the overall results charactor by charactor.</p>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSample</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span><br><span class="line"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testSample1</span><span class="params">()</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// assertEquals($a, $b) checks if $a == $b.</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assertEquals(<span class="number">2</span>, <span class="number">1</span>+<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testSample2</span><span class="params">()</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assertEquals(<span class="number">2</span>, <span class="number">1</span><span class="number">-1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3>Running Test</h3>
+<p>Save php file, in terminal we can run it by command.
+Option <code>--color</code> can make syntax highlighting.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ phpunit --color TestSample.php</span><br><span class="line">PHPUnit 4.7.3 by Sebastian Bergmann and contributors.</span><br><span class="line"> </span><br><span class="line">.F</span><br><span class="line"> </span><br><span class="line">Time: 81 ms, Memory: 18.00Mb</span><br><span class="line"> </span><br><span class="line">There was 1 failure:</span><br><span class="line"> </span><br><span class="line">1) TestSample::testSample2</span><br><span class="line">Failed asserting that 0 matches expected 2.</span><br><span class="line"> </span><br><span class="line">/tmp/TestSample.php:10</span><br><span class="line"> </span><br><span class="line">FAILURES!</span><br><span class="line">Tests: 2, Assertions: 2, Failures: 1.</span><br></pre></td></tr></table></figure></p>
+<h3>Explaination of Result</h3>
+<p>Line #4 &quot;.F&quot; tells you the overall results charactor by charactor.</p>
 <table>
 <thead>
 <tr>
@@ -250,7 +259,8 @@ After install">
 </tbody>
 </table>
 <p>Full details at <a href="https://phpunit.de/manual/current/en/textui.html" target="_blank" rel="external">here</a>.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<h2>References</h2>
+<ol>
 <li><a href="https://phpunit.de/manual/current/en/installation.html" target="_blank" rel="external">PHPUnit Official Documentation</a></li>
 <li><a href="http://naoberry.com/tech/phpunit-init/#phpunit" target="_blank" rel="external">PHPの単体テストを自動化したかったので、phpunitを試してみた。</a></li>
 </ol>
@@ -264,7 +274,7 @@ After install">
 
 </div>
 
-    <a data-url="http://ukyouz.github.io/article/php/phpunit-installation.html" data-id="ciwoed37n00075g5vpzu5ii2m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://ukyouz.github.io/article/php/phpunit-installation.html" data-id="cixyxpwsi0007p75vld5l4kik" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -388,6 +398,15 @@ After install">
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/RTL-Design/">RTL Design</a></p>
+                            <p class="item-title"><a href="/article/verilog/verilog-circuits-design-1-of-2.html" class="title">Verilog Circuits Design - 1/2</a></p>
+                            <p class="item-date"><time datetime="2016-11-08T16:00:00.000Z" itemprop="datePublished">2016-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/RTL-Design/">RTL Design</a></p>
                             <p class="item-title"><a href="/article/verilog/verilog-combinational-circuits-design.html" class="title">Verilog Combinational Circuits Design</a></p>
                             <p class="item-date"><time datetime="2016-11-08T16:00:00.000Z" itemprop="datePublished">2016-11-09</time></p>
                         </div>
@@ -429,7 +448,7 @@ After install">
     <div class="widget-wrap">
         <h3 class="widget-title">分類</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/RTL-Design/">RTL Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Development/">Web Development</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/RTL-Design/">RTL Design</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Development/">Web Development</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -447,7 +466,7 @@ After install">
     <div class="widget-wrap">
         <h3 class="widget-title">歸檔</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -459,7 +478,7 @@ After install">
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2016 Chih-hung Cheng<br>
+            &copy; 2017 Chih-hung Cheng<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
@@ -491,6 +510,6 @@ After install">
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div>
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

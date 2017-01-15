@@ -3,50 +3,38 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>Verilog Combinational Circuits Design | zhung&#39;s zone</title>
+    <title>Verilog Circuits Design - 1/2 | zhung&#39;s zone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Verilog 是一種硬體描述語言（Hardware Description Langage, HDL），由於描述與執行方法和軟體不同，所以思考邏輯也不一樣。
-基本的設計流程：
+    <meta name="description" content="Lec 1
+Cell-based Design Flow
 
-Design Specification
-Algorithmic Model
-RTL Model
-Gate-Level Model
-Switch-Level Model
-Physical Layout
-
-其中的 2 –">
+Specification Development System models
+RTL code development Functional Vericication
+Synthesis Timing Verification
+Physical Synthesis/Place and Route Physical Verificatio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Verilog Combinational Circuits Design">
-<meta property="og:url" content="http://ukyouz.github.io/article/verilog/verilog-combinational-circuits-design.html">
+<meta property="og:title" content="Verilog Circuits Design - 1/2">
+<meta property="og:url" content="http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html">
 <meta property="og:site_name" content="zhung's zone">
-<meta property="og:description" content="Verilog 是一種硬體描述語言（Hardware Description Langage, HDL），由於描述與執行方法和軟體不同，所以思考邏輯也不一樣。
-基本的設計流程：
+<meta property="og:description" content="Lec 1
+Cell-based Design Flow
 
-Design Specification
-Algorithmic Model
-RTL Model
-Gate-Level Model
-Switch-Level Model
-Physical Layout
-
-其中的 2 –">
-<meta property="og:image" content="http://ukyouz.github.io/images/synchronizer.jpg">
-<meta property="og:updated_time" content="2016-11-11T17:22:09.000Z">
+Specification Development System models
+RTL code development Functional Vericication
+Synthesis Timing Verification
+Physical Synthesis/Place and Route Physical Verificatio">
+<meta property="og:image" content="http://ukyouz.github.io/images/verilog/setup_time_margin.png">
+<meta property="og:updated_time" content="2017-01-15T17:29:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Verilog Combinational Circuits Design">
-<meta name="twitter:description" content="Verilog 是一種硬體描述語言（Hardware Description Langage, HDL），由於描述與執行方法和軟體不同，所以思考邏輯也不一樣。
-基本的設計流程：
+<meta name="twitter:title" content="Verilog Circuits Design - 1/2">
+<meta name="twitter:description" content="Lec 1
+Cell-based Design Flow
 
-Design Specification
-Algorithmic Model
-RTL Model
-Gate-Level Model
-Switch-Level Model
-Physical Layout
-
-其中的 2 –">
-<meta name="twitter:image" content="http://ukyouz.github.io/images/synchronizer.jpg">
+Specification Development System models
+RTL code development Functional Vericication
+Synthesis Timing Verification
+Physical Synthesis/Place and Route Physical Verificatio">
+<meta name="twitter:image" content="http://ukyouz.github.io/images/verilog/setup_time_margin.png">
     
 
     
@@ -197,7 +185,7 @@ Physical Layout
 </aside>
 
             
-            <section id="main"><article id="post-verilog/verilog-combinational-circuits-design" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-verilog/verilog-circuits-design-1-of-2" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -206,7 +194,7 @@ Physical Layout
                 
     
         <h1 class="article-title" itemprop="name">
-            Verilog Combinational Circuits Design
+            Verilog Circuits Design - 1/2
         </h1>
     
 
@@ -214,7 +202,7 @@ Physical Layout
                     
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <!--a href="/article/verilog/verilog-combinational-circuits-design.html"-->
+        <!--a href="/article/verilog/verilog-circuits-design-1-of-2.html"-->
             <time datetime="2016-11-08T16:00:00.000Z" itemprop="datePublished">2016-11-09</time>
         <!--/a-->
     </div>
@@ -237,22 +225,308 @@ Physical Layout
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Verilog 是一種硬體描述語言（Hardware Description Langage, HDL），由於描述與執行方法和軟體不同，所以思考邏輯也不一樣。</p>
-<p>基本的設計流程：</p>
+            <h2>Lec 1</h2>
+<h3>Cell-based Design Flow</h3>
+<ol>
+<li>Specification Development System models</li>
+<li>RTL code development Functional Vericication</li>
+<li>Synthesis Timing Verification</li>
+<li>Physical Synthesis/Place and Route Physical Verificatio</li>
+<li>Prototype Build and Test</li>
+</ol>
+<h3>Verilog HDL Design Flow</h3>
 <ol>
 <li>Design Specification</li>
-<li>Algorithmic Model</li>
-<li>RTL Model</li>
-<li>Gate-Level Model</li>
-<li>Switch-Level Model</li>
+<li><em>Algorithmic Model</em></li>
+<li><em>RTL Model</em></li>
+<li><em>Gate-Level Model</em></li>
+<li><em>Switch-Level Model</em></li>
 <li>Physical Layout</li>
 </ol>
-<p>其中的 2 – 5 就會根據我們寫的 Verilog 程式，來合成出對應的電路。一個好的 Coding Style 、以及完善的邏輯，將可以確保電路的正常運作。</p>
-<h2>RTL Design - A Module</h2>
-<p>一個電路組即一個模組（Module），使用 Verilog 語言來表現我們想要的邏輯功能。Register-Transfer-Level (RTL)，意即利用暫存器（reg）所包含的資料轉移，來達成訊號的 Input/Output (IO)，暫存器之間則會有導線（wire）連接。以下是一個 Module 的範例：</p>
-<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> synchronizer(D, Q, clk, rst_n);</span><br><span class="line">  <span class="keyword">input</span> D;</span><br><span class="line">  <span class="keyword">input</span> clk;</span><br><span class="line">  <span class="keyword">input</span> rst_n;  </span><br><span class="line">  <span class="keyword">output</span> Q;</span><br><span class="line">     </span><br><span class="line">  <span class="keyword">reg</span> A1, A2;</span><br><span class="line">  <span class="keyword">assign</span> Q = A2;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(!rst_n) <span class="keyword">begin</span></span><br><span class="line">      A1 &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      A1 &lt;= D;  </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(!rst_n) <span class="keyword">begin</span></span><br><span class="line">      A2 &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      A2 &lt;= A1;  </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure></p>
-<p>其對應的電路 Block Diagram 是
-<img src="/images/synchronizer.jpg" alt=""></p>
+<h3>Data Type</h3>
+<p>4-value logic system: <code>0</code>,<code>1</code>,<code>x</code>,<code>z</code></p>
+<h3>Port</h3>
+<p>In a <code>module</code>,</p>
+<ul>
+<li>Input: <code>wire</code></li>
+<li>Output: <code>reg</code>, or <code>wire</code></li>
+<li>Inout: <code>wire</code></li>
+</ul>
+<h3>Useful Boolean Operators</h3>
+<ol>
+<li>Bitwise: <code>~a</code>, <code>a&amp;b</code>, <code>a|b</code>, <code>a^b</code>, <code>a~^b</code><br>
+=&gt; bit by bit</li>
+<li>Logical: <code>!a</code>, <code>a&amp;&amp;b</code>, <code>a||b</code><br>
+=&gt; output 1 bit, high or low</li>
+<li>Reduction: <code>&amp;a</code>, <code>~&amp;a</code>, <code>|a</code>, <code>~|a</code>, <code>^a</code><br>
+=&gt; bit by bit</li>
+<li>Comparison: <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>, <code>===</code>, <code>!===</code><br>
+=&gt; output 1 bit, high or low</li>
+</ol>
+<blockquote>
+<p><code>===</code> &amp; <code>!==</code> can compare with <code>x</code> and <code>z</code> value.
+<code>==</code> &amp; <code>!=</code> just get <code>x</code> if there is any unkown in comparison.</p>
+</blockquote>
+<h3>Combinational circuit</h3>
+<p>An example:</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span>(sel)</span><br><span class="line">    out = a;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    out = b;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<h3>Coding Style</h3>
+<p>Better to use <code>wire</code> for input and <code>reg</code> for output.</p>
+<h2>Lec 2</h2>
+<h3>Sequential Circuit</h3>
+<p>Output depends not only on the current input values, but also on preceding input values.</p>
+<p>Sequential circuit example:</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span>(sel)</span><br><span class="line">    out &lt;= a;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    out &lt;= b;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<h3>Reset</h3>
+<h4>Synchronous</h4>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> (rst)</span><br><span class="line">    a &lt;= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    a &lt;= b;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Pros:
+<ul>
+<li>Glitch filtering from reset combinational logic</li>
+</ul>
+</li>
+<li>Cons:
+<ul>
+<li>Can’t be reset without clock signal</li>
+<li>Large area</li>
+</ul>
+</li>
+</ul>
+<h4>Asynchronous</h4>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> posdege rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> (rst)</span><br><span class="line">    a &lt;= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    a &lt;= b;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Pros:
+<ul>
+<li>Independent of <code>clk</code> signal</li>
+<li>Immediate reset</li>
+<li>Less area</li>
+</ul>
+</li>
+<li>Cons:
+<ul>
+<li>Noisy reset line could cause unwanted reset</li>
+<li>Metastability</li>
+</ul>
+</li>
+</ul>
+<h3>Finite State Mechine</h3>
+<p>Finite state mechine can be referred to as the controller and status of the whole module</p>
+<ul>
+<li><strong>Mealy machine</strong><br>
+The outputs depend on the current state and inputs.</li>
+<li><strong>Moore machine</strong><br>
+The outputs depend on the current state only.</li>
+</ul>
+<h2>Lec 3</h2>
+<h3>Test Methodology</h3>
+<ul>
+<li><strong>Directed testing</strong><br>
+Time cost, not effective, find known bug</li>
+<li><strong>Constrained random testing</strong><br>
+Find out bugs never expected</li>
+</ul>
+<h2>Lec 4</h2>
+<h3>Timing Definitions</h3>
+<ol>
+<li><strong>Setup time ($t_{setup}$)</strong><br>
+The time that the input signal must be stabilized before the clock edge.</li>
+<li><strong>Hold time ($t_{hold}$)</strong><br>
+The time that the input signal must be stabilized after the clock edge.</li>
+<li><strong>clk-to-Q contamination delay ($t_{ccq}$)</strong><br>
+The contamination time that Q is first changed after the clock edge.</li>
+<li><strong>clk-to-Q propagation delay ($t_{pcq}$)</strong><br>
+The contamination time that Q is first changed after the clock edge.</li>
+</ol>
+<h3>Timing Criterion</h3>
+<p><strong>Setup time margin</strong>: $t_{cycle} + t_{skew} &gt; t_{pcq} + t_{pd} + t_{setup} $</p>
+<p><img src="/images/verilog/setup_time_margin.png" alt=""></p>
+<blockquote>
+<p>Setup violation =&gt; too many works in 1 cycle
+Apply &quot;pupelining&quot;</p>
+</blockquote>
+<p><strong>Hold time margin</strong>: $t_{ccq} + t_{tcd} &gt; t_{hold} + t_{skew}$</p>
+<p><img src="/images/verilog/hold_time_margin.png" alt=""></p>
+<blockquote>
+<p>Hold violation =&gt; insufficent delay</p>
+</blockquote>
+<h3>Pipe Line</h3>
+<p>Trade-off between area and timing</p>
+<p><img src="/images/verilog/pipe_line.png" alt=""></p>
+<h2>Lec 5</h2>
+<h3>Intellectual Property (IP)</h3>
+<p>IP is a design of a logic function that specifies how the elements are interconnected.</p>
+<ul>
+<li>Soft macro IP: Synthesizable RTL
+<ul>
+<li>Portable and editable</li>
+<li>Unknown performance, timing, area, and power</li>
+<li>IP protection risks</li>
+</ul>
+</li>
+<li>Firm macro IP: Netlist format
+<ul>
+<li>Performance optimization under specific tech</li>
+<li>Need not synthesizing</li>
+</ul>
+</li>
+<li>Hard macro IP: Hardware (LEF, GDS2 file format)
+<ul>
+<li>Physical pathways and wiring</li>
+<li>Moving, rotating, flipping freedom, but interior fixed</li>
+</ul>
+</li>
+</ul>
+<h3>Memory - SRAM</h3>
+<ul>
+<li>Read and write only</li>
+<li>Less area than register</li>
+<li>Slower than register</li>
+<li>One address only every access (single port)</li>
+</ul>
+<p>SRAM logic table is shown below:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CEN</th>
+<th style="text-align:center">OEN</th>
+<th style="text-align:center"><em>WEN</em></th>
+<th style="text-align:left">Mode</th>
+<th style="text-align:left">Q (out)</th>
+<th style="text-align:left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">L</td>
+<td style="text-align:center">x</td>
+<td style="text-align:left">Standby</td>
+<td style="text-align:left">keep</td>
+<td style="text-align:left">Output remain stable</td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:center">L</td>
+<td style="text-align:center">L</td>
+<td style="text-align:left">Write</td>
+<td style="text-align:left">A (in)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:center">L</td>
+<td style="text-align:center">H</td>
+<td style="text-align:left">Read</td>
+<td style="text-align:left">RAM data</td>
+<td style="text-align:left">Output at address A</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">H</td>
+<td style="text-align:center">x</td>
+<td style="text-align:left">High-Z</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">operations unaffected</td>
+</tr>
+</tbody>
+</table>
+<p>For a memory having spec:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Words</th>
+<th style="text-align:center">Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">600</td>
+<td style="text-align:center">8</td>
+</tr>
+</tbody>
+</table>
+<p>You should use:
+Data input <code>reg [7:0] D;</code>.
+Address A  <code>reg [9:0] A;</code>.</p>
+<h2>Lec 6</h2>
+<h3>Basic Synthesis Flow</h3>
+<ol>
+<li><strong>Develop HDL files</strong></li>
+<li><strong>Specify libraries</strong>
+<ul>
+<li>Synthesize in worst case <code>slow.db</code>.</li>
+</ul>
+</li>
+<li><strong>Read Design</strong>
+<ul>
+<li><code>read_verilog -rtl $DESIGN\.v</code></li>
+<li><code>current_design $DESIGN</code></li>
+</ul>
+</li>
+<li><strong>Develop design environment</strong>
+<ul>
+<li>Operating conditions: Process, Volt, &amp; T</li>
+<li>Wire load models: Top, Enclosed, &amp; Segmented 3 modes<br>
+To estimate capacitance, resistance and area due to interconnection.
+<img src="/images/verilog/wire_mode.png" alt=""></li>
+<li>System interface</li>
+</ul>
+</li>
+<li><strong>Set design constraints</strong>
+<ul>
+<li>Rule constraints
+<ul>
+<li><code>set_max_capacitance</code></li>
+<li><code>set_max_transition</code></li>
+<li><code>set_fanout_load</code></li>
+<li><code>set_max_fanout</code></li>
+</ul>
+</li>
+<li>Optimization contraints
+<ul>
+<li>set_clock_latency</li>
+<li>set_clock_uncertainty</li>
+<li>set_propagated_clock</li>
+<li>set_input_delay</li>
+<li>set_output_delay</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Select compile strategy</strong>
+<ul>
+<li>3 compiles: Top-down, bottom-up, &amp; mixed</li>
+</ul>
+</li>
+<li><strong>Optimize the design</strong>
+<ul>
+<li><code>compile</code> and <code>compile_ultra</code></li>
+</ul>
+</li>
+<li><strong>Analyze and resolve design problems</strong>
+<ul>
+<li><code>check_design</code>, like syntax</li>
+<li><code>report_area</code></li>
+<li><code>report_timing</code></li>
+</ul>
+</li>
+<li><strong>Save the design database</strong></li>
+</ol>
+<h2>Lec 7</h2>
+<h3>Clock Latency</h3>
+<ul>
+<li><strong>Clock source latency</strong> (outside)<br>
+from clock source to clock definition point (clk)</li>
+<li><strong>Clock network latency</strong> (inside)<br>
+from clock definition point (clk) to clock pin of a flip-flop</li>
+</ul>
+<h3>Clock Domain Crossing</h3>
+<p>Data launched and captured by different(asynchronous) clock domain.</p>
+<h4>Metastability</h4>
+<p>The unstable status due to non-ideal data transition.</p>
+<p>An example solution to CDC design, for both &quot;fast-to-slow&quot; and &quot;slow-to-fast&quot;.
+<img src="/images/verilog/cdc.png" alt=""></p>
 
         
         </div>
@@ -263,7 +537,7 @@ Physical Layout
 
 </div>
 
-    <a data-url="http://ukyouz.github.io/article/verilog/verilog-combinational-circuits-design.html" data-id="cixyxpwsm000bp75vcxdt9t96" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html" data-id="cixyxpwsk0009p75vjtsr2yxn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -331,7 +605,7 @@ Physical Layout
 
             
     
-        <a href="http://ukyouz.github.io/article/verilog/verilog-combinational-circuits-design.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://ukyouz.github.io/article/verilog/verilog-combinational-circuits-design.html">評論</a>
+        <a href="http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html">評論</a>
     
 
         </footer>
@@ -340,19 +614,10 @@ Physical Layout
         
 <nav id="article-nav">
     
-        <a href="/article/verilog/verilog-circuits-design-1-of-2.html" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    Verilog Circuits Design - 1/2
-                
-            </div>
-        </a>
     
-    
-        <a href="/article/php/phpunit-installation.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/article/verilog/verilog-combinational-circuits-design.html" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">PHPUnit (1) 安裝</div>
+            <div class="article-nav-title">Verilog Combinational Circuits Design</div>
         </a>
     
 </nav>
@@ -478,7 +743,7 @@ Physical Layout
     var disqus_shortname = 'ukyouz';
     
     
-    var disqus_url = 'http://ukyouz.github.io/article/verilog/verilog-combinational-circuits-design.html';
+    var disqus_url = 'http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html';
     
     (function() {
     var dsq = document.createElement('script');
