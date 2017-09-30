@@ -24,7 +24,7 @@ RTL code development Functional Vericication
 Synthesis Timing Verification
 Physical Synthesis/Place and Route Physical Verificatio">
 <meta property="og:image" content="http://ukyouz.github.io/images/verilog/setup_time_margin.png">
-<meta property="og:updated_time" content="2017-01-15T17:29:48.000Z">
+<meta property="og:updated_time" content="2017-09-30T17:47:04.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Verilog Circuits Design - 1/2">
 <meta name="twitter:description" content="Lec 1
@@ -339,12 +339,13 @@ The contamination time that Q is first changed after the clock edge.</li>
 The contamination time that Q is first changed after the clock edge.</li>
 </ol>
 <h3>Timing Criterion</h3>
-<p><strong>Setup time margin</strong>: $t_{cycle} + t_{skew} &gt; t_{pcq} + t_{pd} + t_{setup} $</p>
+<p><strong>Setup time margin</strong>: $\t_{cycle} + t_{skew} &gt; t_{pcq} + t_{pd} + t_{setup}$</p>
 <p><img src="/images/verilog/setup_time_margin.png" alt=""></p>
 <blockquote>
 <p>Setup violation =&gt; too many works in 1 cycle
-Apply &quot;pupelining&quot;</p>
+Apply &quot;pipelining&quot;</p>
 </blockquote>
+<p>Simple inline $a = b + c$.</p>
 <p><strong>Hold time margin</strong>: $t_{ccq} + t_{tcd} &gt; t_{hold} + t_{skew}$</p>
 <p><img src="/images/verilog/hold_time_margin.png" alt=""></p>
 <blockquote>
@@ -537,7 +538,7 @@ from clock definition point (clk) to clock pin of a flip-flop</li>
 
 </div>
 
-    <a data-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html" data-id="cixyxpwsk0009p75vjtsr2yxn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-1-of-2.html" data-id="cj87lwxdj0009f0xfki5082hk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -764,6 +765,21 @@ from clock definition point (clk) to clock pin of a flip-flop</li>
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
