@@ -3,17 +3,39 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>標籤: laravel | zhung&#39;s zone</title>
+    <title>TransEra HTBasic Syntax | zhung&#39;s zone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhung's zone">
-<meta property="og:url" content="http://ukyouz.github.io/tags/laravel/index.html">
+    <meta name="description" content="Loop Conditions
+While
+123WHILE condition    ...END WHILE
+For
+123FOR X=1 TO N [STEP 1]    ...NEXT X
+If STEP is not specified, default step value is 1.
+Loop
+12345LOOP    ...[EXIT IF condition]    ...END">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TransEra HTBasic Syntax">
+<meta property="og:url" content="http://ukyouz.github.io/article/others/htbasic.html">
 <meta property="og:site_name" content="zhung's zone">
-<meta property="og:description">
+<meta property="og:description" content="Loop Conditions
+While
+123WHILE condition    ...END WHILE
+For
+123FOR X=1 TO N [STEP 1]    ...NEXT X
+If STEP is not specified, default step value is 1.
+Loop
+12345LOOP    ...[EXIT IF condition]    ...END">
+<meta property="og:updated_time" content="2017-09-30T19:25:55.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhung's zone">
-<meta name="twitter:description">
+<meta name="twitter:title" content="TransEra HTBasic Syntax">
+<meta name="twitter:description" content="Loop Conditions
+While
+123WHILE condition    ...END WHILE
+For
+123FOR X=1 TO N [STEP 1]    ...NEXT X
+If STEP is not specified, default step value is 1.
+Loop
+12345LOOP    ...[EXIT IF condition]    ...END">
     
 
     
@@ -164,20 +186,16 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#laravel</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-others/htbasic" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/article/php/laravel-blade.html">Laravel - Blade Notes</a>
+        <h1 class="article-title" itemprop="name">
+            TransEra HTBasic Syntax
         </h1>
     
 
@@ -185,28 +203,153 @@
                     
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <!--a href="/article/php/laravel-blade.html"-->
-            <time datetime="2016-05-22T16:00:00.000Z" itemprop="datePublished">2016-05-23</time>
+        <!--a href="/article/others/htbasic.html"-->
+            <time datetime="2017-09-30T16:00:00.000Z" itemprop="datePublished">2017-10-01</time>
         <!--/a-->
     </div>
 
                     
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Web-Development/">Web Development</a>
+        <a class="article-category-link" href="/categories/Instrument-Control/">Instrument Control</a>
     </div>
 
                     
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/blade/">blade</a> <a class="tag-link" href="/tags/laravel/">laravel</a> <a class="tag-link" href="/tags/php/">php</a>
+        <a class="tag-link" href="/tags/basic/">basic</a>
     </div>
 
                 </div>
-            </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2>Loop Conditions</h2>
+<h3>While</h3>
+<p><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHILE</span> condition</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">WHILE</span></span><br></pre></td></tr></table></figure></p>
+<h3>For</h3>
+<p><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FOR</span> X=<span class="number">1</span> <span class="keyword">TO</span> N [STEP <span class="number">1</span>]</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">NEXT</span> X</span><br></pre></td></tr></table></figure></p>
+<p>If <code>STEP</code> is not specified, default step value is 1.</p>
+<h3>Loop</h3>
+<p><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LOOP</span></span><br><span class="line">    ...</span><br><span class="line">[<span class="keyword">EXIT</span> <span class="keyword">IF</span> condition]</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span></span><br></pre></td></tr></table></figure></p>
+<p><code>EXIT IF</code> stops and breaks the loop.</p>
+<h2>Subprogram &amp; Function</h2>
+<p>Subprogram can take parameters and does not return value. Function can also use parameters and return an <code>INTEGER</code> or a <code>STRING</code>.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">! Main Program</span><br><span class="line">    ...</span><br><span class="line">    Area = FNSquare(Side)</span><br><span class="line">    </span><br><span class="line">    CALL Your_sub_name(@4156, Count, Numbers(*), Out$)</span><br><span class="line">    PRINT FNRepeat_char$(&quot;-&quot;, 50)</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">SUB Your_sub_name(@meter, I, Arr(*), Str$)</span><br><span class="line">    ...</span><br><span class="line">SUBEND</span><br><span class="line"></span><br><span class="line">DEF FNSquare(I)</span><br><span class="line">    RETURN I*I</span><br><span class="line">FNEND</span><br><span class="line"></span><br><span class="line">DEF FNRepeat_char$(C$, I)</span><br><span class="line"></span><br><span class="line">FNEND</span><br></pre></td></tr></table></figure></p>
+<p>Sometimes <code>syntax error</code> appears even if there is no syntax error, when this happen, save your file first.</p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://ukyouz.github.io/article/others/htbasic.html" data-id="cj8bv4voq0006i3xftsxgdmvd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://ukyouz.github.io/article/others/htbasic.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://ukyouz.github.io/article/others/htbasic.html">評論</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/article/verilog/verilog-circuits-design-2-of-2.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Verilog Circuits Design - 2/2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
@@ -312,11 +455,13 @@
     var disqus_shortname = 'ukyouz';
     
     
+    var disqus_url = 'http://ukyouz.github.io/article/others/htbasic.html';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

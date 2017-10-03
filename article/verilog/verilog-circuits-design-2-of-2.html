@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    <title>Verilog Circuits Design - 2/2 | zhung&#39;s zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Lec 8 - Low Power
+Power Dissipation
+$$P_{total} = P_{static} + P_{dynamic}$$
+Static Power: $P_{static}$
+Static power dissipation is caused by leakeage current.
+$$P_{static} = I_{leakage} \times V_{DD}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Verilog Circuits Design - 2/2">
+<meta property="og:url" content="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html">
+<meta property="og:site_name" content="zhung's zone">
+<meta property="og:description" content="Lec 8 - Low Power
+Power Dissipation
+$$P_{total} = P_{static} + P_{dynamic}$$
+Static Power: $P_{static}$
+Static power dissipation is caused by leakeage current.
+$$P_{static} = I_{leakage} \times V_{DD}">
+<meta property="og:image" content="http://ukyouz.github.io/images/verilog/gating_clock.png">
+<meta property="og:updated_time" content="2017-10-03T17:28:38.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Verilog Circuits Design - 2/2">
+<meta name="twitter:description" content="Lec 8 - Low Power
+Power Dissipation
+$$P_{total} = P_{static} + P_{dynamic}$$
+Static Power: $P_{static}$
+Static power dissipation is caused by leakeage current.
+$$P_{static} = I_{leakage} \times V_{DD}">
+<meta name="twitter:image" content="http://ukyouz.github.io/images/verilog/gating_clock.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+    
+    
+
+</head>
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">zhung&#39;s zone</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/images/profile.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="找什麼？" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: 'Pages',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/images/profile.png" />
+            <h2 id="name">Zhung</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Hsinchu, Taiwan</span>
+            <a id="follow" target="_blank" href="https://github.com/ukyouz/">關注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                7
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                7
+                <span>標籤</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    <td><a href="https://github.com/ukyouz/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+                    
+                    <td><a href="https://github.com/ukyouz/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+                    
+                    <td><a href="https://www.facebook.com/jcheng.101" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-verilog/verilog-circuits-design-2-of-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Verilog Circuits Design - 2/2
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <!--a href="/article/verilog/verilog-circuits-design-2-of-2.html"-->
+            <time datetime="2017-09-30T16:00:00.000Z" itemprop="datePublished">2017-10-01</time>
+        <!--/a-->
+    </div>
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/RTL-Design/">RTL Design</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/verilog/">verilog</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2>Lec 8 - Low Power</h2>
+<h3>Power Dissipation</h3>
+<p>$$P_{total} = P_{static} + P_{dynamic}$$</p>
+<h4>Static Power: $P_{static}$</h4>
+<p>Static power dissipation is caused by leakeage current.</p>
+<p>$$P_{static} = I_{leakage} \times V_{DD}$$</p>
+<p>Sources</p>
+<ol>
+<li>Sub-threshold $\propto T$<br>
+Donimate the leakage</li>
+<li>Gate Leakage  $\propto V_{DD}$</li>
+<li>Reverse Leakage $\propto T$<br>
+Happen when device is reverse biased</li>
+</ol>
+<p>To minimize</p>
+<ol>
+<li>Reduce voltage supply (process dependent)</li>
+<li>In general the leakage current can't be changed if process and cells are decided</li>
+</ol>
+<h4>Dynamic Power</h4>
+<p>Dominate power dissipation.</p>
+<p>$$P_{dynamic} = p_t \times \left( {P_D + P_{SC}} \right)$$</p>
+<ul>
+<li>$P_t$<br>
+<em>Switching probability</em> of clock cycle</li>
+<li>$P_D = C_{load} \cdot V_{DD}^2 \cdot f_{clk}$<br>
+<em>Switching power</em>, charging and discharging the loadgin capacitance</li>
+<li>$P_{SC} = t_{sc} \cdot V_{DD} \cdot I_{peak} \cdot f_{clk}$<br>
+<em>Short circuit power</em>, direct path between VDD and GND when switching, both NMOS and PMOS are turned on</li>
+</ul>
+<p>To minimize</p>
+<ol>
+<li>Reduce unnecessary switching acitivities $\Rightarrow p_t$
+<ul>
+<li>Gated clock (Turn off unused circuits)</li>
+<li>Register retiming</li>
+<li>State assign</li>
+</ul>
+</li>
+<li>Reduce parastic capacitance $\Rightarrow P_D$</li>
+<li>Reduce $V_{DD}$, process dependent $\Rightarrow P_D, P_{SC}$</li>
+<li>Reduce the overlap time of PMOS and NMOS turn-on time. Ex: Keep the input signal rise/fall time the same. $\Rightarrow P_{SC}$</li>
+</ol>
+<h3>Low Power Design Methodologies</h3>
+<ol>
+<li>Reduce supply VDD: Multi Voltage</li>
+<li>Reduce leakage current: Multi Vt</li>
+<li>Reduce transition frequency (activity)<br>
+Lower the clock frequency.
+Circuit techniques (clock gating, register retiming, …)</li>
+<li>Reduce loading capacitance $C_{load}$
+Depends on layout, material, and process.</li>
+<li>Reduce short circuit current<br>
+Balance the $t_{rise}$ and $t_{fall}$ of logic gate input.</li>
+</ol>
+<h4>Multi Voltage</h4>
+<p>Reduce VDD is though straightfoward, decreasing VDD would cause the circuit delay increasing.</p>
+<ol>
+<li>Static Voltage Scaling (SVS)
+Different blocks or subsystems =&gt; different fixed supply voltages</li>
+<li>Multi-level Voltage Scaling (MVS)
+A block or subsystem =&gt; switching between two or more voltage levels</li>
+<li>Dynamic Voltage and Frequency Scaling (DVFS)
+An extension of MVS where a larger # of voltage levels are dynamically switched to follow changing workloads.</li>
+</ol>
+<p>A level shifter may cause:</p>
+<ol>
+<li>Timing inaccuracy</li>
+<li>Signals are not propagated</li>
+</ol>
+<p>Challenges</p>
+<ol>
+<li>Level shifter need to be carefully designed, including the clock tree synthesis tool</li>
+<li>Timing analysis is more complex</li>
+<li>Floor planning, power planning, etc.</li>
+</ol>
+<h4>Multi Vt</h4>
+<p>As Vt decreases, sub-threshold leakage increases.</p>
+<ul>
+<li>Power concern: High Vt</li>
+<li>Delay concern: Low Vt</li>
+</ul>
+<p>With multi-Vt technology, critical path uses low-Vt logic to reduce delay, and non-critical path use path-Vt to reduce power dissipation. There are mixed of defferent Vt devices in one logic gate.</p>
+<h4>Power Gating</h4>
+<p>Switching between modes to maximize power saving while minimizing the impact to performance. Power gating needs a control circuit to schedule the whole procedure.</p>
+<ul>
+<li>A low power mode</li>
+<li>An active mode</li>
+<li>Sleep mode: shut down power to block logic</li>
+</ul>
+<p>Common Power Format</p>
+<p>A TCL-based power specificatioin file, consisting of commands and objects describing power intent.</p>
+<h3>Clock Gating</h3>
+<ul>
+<li>Reduce poewr consumption of registers by turn off the unused registers.</li>
+<li>Reduce the clock switching power.</li>
+</ul>
+<h4>Methods</h4>
+<ol>
+<li>Gated clock, bypasss data<br>
+For a design on ASIC.
+The gated conditions should be chosen carefully.<br>
+<img src="/images/verilog/gating_clock.png" alt=""></li>
+<li>Gated data, bypass clock<br>
+For a design on FPGA the clock tree is pre-generated, so it's difficult to implement dynamic gated clock scheme.<br>
+To logic equivalent with dynamic gated clock design, the data gating condition should be same with above.
+<img src="/images/verilog/gating_data.png" alt=""></li>
+</ol>
+<p>Clock gating can be implemented by either AND- or OR- gating. The control signal can only change in specific half cycle (Low period for AND gate, high period for OR gate).</p>
+<p>Use a latch to avoid glitch.</p>
+<p><img src="/images/verilog/avoiding_glitch.png" alt=""></p>
+<p>OR-gating is better_, since the gated clock is tied at high when the register is turned off. No matter data is toggling, the first latch circuit will not be toggled.</p>
+<p>However, for AND-gating, the fated clock is tied at low when the register is turned off. The first latch circuits will consume power as data input is switching.</p>
+<p>The gating control signals should be generated from clock rising edge flip-flops.</p>
+<ul>
+<li>Consistent with original clock rising edge triggering design</li>
+<li>Easier for timing control and analysis</li>
+</ul>
+<h2>Lec 9 - System Verilog</h2>
+<h3>Design Environment</h3>
+<p><strong>testbed.sv</strong></p>
+<ul>
+<li>Connecting testbench and design modules</li>
+<li>Generating clock</li>
+<li>Dump waveform</li>
+</ul>
+<p><strong>design.sv</strong></p>
+<ul>
+<li>Design under test</li>
+</ul>
+<p><strong>pattern.sv</strong></p>
+<ul>
+<li>Pattern</li>
+<li>Test program</li>
+<li>Assertion</li>
+<li>Converage</li>
+</ul>
+<h3>Data Types</h3>
+<h4>4-State Variables <code>10ZX</code></h4>
+<p>Default is <code>X</code> if not initialized.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">logic</span> w; <span class="comment">// used in both assignment and procedure blocks</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>logic</strong></p>
+<ul>
+<li>No input and output restriction</li>
+<li>No continuous or block procedure restriction</li>
+</ul>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> r;</span><br><span class="line"><span class="keyword">integer</span> i; <span class="comment">// 32-bit data type</span></span><br></pre></td></tr></table></figure></p>
+<h4>2-State Variables <code>10</code></h4>
+<p>Defualt is <code>0</code> if not initialized.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bit</span> b;      <span class="comment">//  1-bit        integer</span></span><br><span class="line"><span class="keyword">byte</span> b_8;   <span class="comment">//  8-bit signed integer</span></span><br><span class="line"><span class="keyword">shortint</span> s; <span class="comment">// 16-bit signed integer</span></span><br><span class="line"><span class="keyword">int</span> i;      <span class="comment">// 32-bit signed integer</span></span><br><span class="line"><span class="keyword">longint</span> l;  <span class="comment">// 64-bit signed integer</span></span><br></pre></td></tr></table></figure></p>
+<h4>Enumerate</h4>
+<p>Enumerate defines a set of named values, providing built-in assertion. Default data type is <code>int</code>. Variables are initialized to <code>0</code> if not initialized.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> &#123;red, green, blue&#125; led; <span class="comment">// red=0, green=1, blue=2</span></span><br><span class="line"><span class="keyword">enum</span> <span class="keyword">logic</span> [<span class="number">1</span>:<span class="number">0</span>] &#123;A=<span class="number">2'b01</span>, B=<span class="number">2</span>'<span class="number">10</span>, C=<span class="number">2'b11</span>&#125; class_name;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;IDLE, WAIT, LOAD, RUN&#125; state;</span><br><span class="line">state current_state;</span><br><span class="line">state next_state;</span><br></pre></td></tr></table></figure></p>
+<h4>Structure</h4>
+<p>Similar to <code>class</code> in C language. Group related signals to enhance readability and clearly convey designer's intent.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">logic</span>[<span class="number">3</span>:<span class="number">0</span>] address;</span><br><span class="line">&#125; INSTRUCT;</span><br><span class="line">INSTRUCT<span class="variable">.address</span> = <span class="number">4'hff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    state s;</span><br><span class="line">&#125; Core;</span><br><span class="line">Core CPU;</span><br><span class="line">CPU<span class="variable">.state</span> = IDLE;</span><br></pre></td></tr></table></figure></p>
+<h4>Package</h4>
+<p>Package can include parameters, user-defined enumerates, structures, and functions.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> calculator;</span><br><span class="line">    <span class="keyword">parameter</span> VERSION = <span class="string">"1.0"</span>;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;ADD, SUB, MULT&#125; operation;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">        <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] a, b;</span><br><span class="line">        operation op;</span><br><span class="line">    &#125; Instruct;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">automatic</span> [<span class="number">31</span>:<span class="number">0</span>] multiple (<span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] in_a, in_b);</span><br><span class="line">        <span class="keyword">return</span> in_a * in_b;</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endpackage</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Use package in module</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> calculator::*;</span><br><span class="line"><span class="keyword">module</span> ALU (</span><br><span class="line">    <span class="comment">// Without import, you need to use like:</span></span><br><span class="line">    <span class="comment">// input calculator::Instruct INS</span></span><br><span class="line">    <span class="keyword">input</span> Instruct INS,</span><br><span class="line">    <span class="keyword">input</span> <span class="keyword">logic</span> clk,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] result </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">always_comb</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">case</span> (INS<span class="variable">.op</span>)</span><br><span class="line">    ADD: result = INS<span class="variable">.a</span> + INS<span class="variable">.b</span>;</span><br><span class="line">    SUB: result = INS<span class="variable">.a</span> - INS<span class="variable">.b</span>;</span><br><span class="line">    MULT:result = multiple(INS<span class="variable">.a</span>, INS<span class="variable">.b</span>);</span><br><span class="line">    <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure></p>
+<h3>Procedure Blocks</h3>
+<p>In Verilog, <code>always</code> is a general procedure block, depending on context which is not intuitive. System Verilog adds 3 new logic specific processes to show designers' intent:</p>
+<ol>
+<li>always_comb</li>
+<li>always_ff</li>
+<li>always_latch</li>
+</ol>
+<h4>always_comb</h4>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Verilog 2001</span></span><br><span class="line"><span class="keyword">always</span>@(b <span class="keyword">or</span> c)</span><br><span class="line">    a = b &amp; c;</span><br><span class="line"></span><br><span class="line"><span class="comment">// System Verilog</span></span><br><span class="line"><span class="keyword">always_comb</span></span><br><span class="line">    a = b &amp; c;</span><br></pre></td></tr></table></figure></p>
+<h4>always_ff</h4>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always_ff</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n)</span><br><span class="line">    <span class="keyword">if</span>(!rst_n)</span><br><span class="line">        q &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        q&lt;= d;</span><br></pre></td></tr></table></figure></p>
+<h3>Interface</h3>
+<p>The interface encapsulate communication between design blocks and verifications blocks.</p>
+<p><img src="/images/verilog/interface.png" alt=""></p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> INF;</span><br><span class="line">    state s;</span><br><span class="line">    <span class="keyword">logic</span> in_valid;</span><br><span class="line">    <span class="keyword">logic</span> [<span class="number">9</span>:<span class="number">0</span>] data;</span><br><span class="line"><span class="keyword">endinterface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> m_A(</span><br><span class="line">    <span class="keyword">input</span> clk,</span><br><span class="line">    INF intf_A</span><br><span class="line">);</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> main(<span class="keyword">input</span> clk);</span><br><span class="line">    INF intf();</span><br><span class="line">    <span class="keyword">module</span> m_A(<span class="variable">.clk</span>(clk), <span class="variable">.intf_A</span>(intf));</span><br><span class="line">    <span class="comment">// other codes…</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure></p>
+<h4>Modports</h4>
+<p>Modports are used to define derection of signal inside interface.</p>
+<p><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> calculator::*;</span><br><span class="line"><span class="keyword">interface</span> INF();</span><br><span class="line">    <span class="keyword">logic</span> rst;</span><br><span class="line">    <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] a, b, out;</span><br><span class="line">    operation op;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">modport</span> PATTERN(</span><br><span class="line">        <span class="keyword">output</span> rst,</span><br><span class="line">        <span class="keyword">output</span> op,</span><br><span class="line">        <span class="keyword">output</span> a,</span><br><span class="line">        <span class="keyword">output</span> b,</span><br><span class="line">        <span class="keyword">input</span> out</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">modport</span> DESIGN(</span><br><span class="line">        <span class="keyword">input</span> rst,</span><br><span class="line">        <span class="keyword">input</span> op,</span><br><span class="line">        <span class="keyword">input</span> a,</span><br><span class="line">        <span class="keyword">input</span> b,</span><br><span class="line">        <span class="keyword">output</span> out</span><br><span class="line">    );</span><br><span class="line"><span class="keyword">endinterface</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * In TESTBED.sv</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">module</span> TESTBED;</span><br><span class="line">    <span class="comment">// …</span></span><br><span class="line">    INF inf();</span><br><span class="line">    PATTERN pattern(</span><br><span class="line">        <span class="variable">.clk</span>(clk),</span><br><span class="line">        <span class="variable">.inf</span>(inf<span class="variable">.PATTERN</span>)</span><br><span class="line">    );</span><br><span class="line">    ALU <span class="keyword">design</span>(</span><br><span class="line">        <span class="variable">.clk</span>(clk),</span><br><span class="line">        <span class="variable">.inf</span>(inf<span class="variable">.DESIGN</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// …</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * In ALU.sv</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">module</span> ALU(</span><br><span class="line">    <span class="keyword">input</span> clk,</span><br><span class="line">    INF<span class="variable">.DESIGN</span> inf</span><br><span class="line">);</span><br><span class="line">    <span class="comment">// …</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure></p>
+<h3>Program Block</h3>
+<p>A <code>program</code> differs from a <code>module</code>:</p>
+<ol>
+<li>Only initial blocks allowed</li>
+<li>Special semantics</li>
+<li>Execute in reactive region</li>
+</ol>
+<h3>Object-Oriented Programming</h3>
+<p>Contents of an object:</p>
+<ol>
+<li>Data field</li>
+<li>Constructor</li>
+<li>Methods</li>
+</ol>
+<h3>Randomization</h3>
+<p>Two types of random properties:</p>
+<ol>
+<li>rand</li>
+<li>randc</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>rand</th>
+<th>randc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any legal value</td>
+<td>Up to 16 bits</td>
+</tr>
+<tr>
+<td>Might repeat</td>
+<td>Cyclic repeat</td>
+</tr>
+</tbody>
+</table>
+<p>For <code>randc</code> bit values &gt; 16-bits, use concatenation.</p>
+<p>A built-in method <code>randomize</code> in each random class, call it to randomized data, returning <code>1</code> if successful, and <code>0</code> if randomization failed.</p>
+<h4>Constraints</h4>
+<p>Class properties are constrained in a <code>constraint</code> block.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">program</span> test;</span><br><span class="line"><span class="keyword">class</span> Location;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span>[<span class="number">9</span>:<span class="number">0</span>] area;</span><br><span class="line">    <span class="keyword">randc</span> <span class="keyword">bit</span>[<span class="number">8</span>:<span class="number">0</span>] lat;</span><br><span class="line">    <span class="keyword">randc</span> <span class="keyword">bit</span>[<span class="number">8</span>:<span class="number">0</span>] lang;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">constraint</span> existing &#123;</span><br><span class="line">        area &gt; <span class="number">0</span>;</span><br><span class="line">        lat <span class="keyword">inside</span> &#123;[-<span class="number">90</span>, <span class="number">90</span>]&#125;;</span><br><span class="line">        lang <span class="keyword">inside</span> &#123;[-<span class="number">180</span>, <span class="number">180</span>]&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constraint</span> not_origin &#123;</span><br><span class="line">        !(lat == <span class="number">0</span>);</span><br><span class="line">        !(lang== <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constraint</span> south_east &#123;</span><br><span class="line">        lat &lt;= <span class="number">0</span>;</span><br><span class="line">        lang &gt;= <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line">Location country;</span><br><span class="line"></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    country = <span class="keyword">new</span>();</span><br><span class="line">    <span class="keyword">if</span>(!country<span class="variable">.randomize</span>())</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"Fail to randomize."</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="comment">// …</span></span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endprogram</span></span><br></pre></td></tr></table></figure></p>
+<h3>Generation Code: For</h3>
+<p>Useful for vector or array, generated codes are equal to printed codes.</p>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">genvar</span> i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">logic</span> [<span class="number">1</span>:<span class="number">0</span>] counts [<span class="number">0</span>:<span class="number">3</span>];</span><br><span class="line"><span class="keyword">generate</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i=i+<span class="number">1</span>) <span class="keyword">begin</span>: generate_counts</span><br><span class="line">        <span class="keyword">always_ff</span>@(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(inf<span class="variable">.rst</span>)</span><br><span class="line">                counts[i] &lt;= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                counts[i] &lt;= <span class="number">10</span>-i;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endgenerate</span></span><br></pre></td></tr></table></figure></p>
+<h2>Lec 10</h2>
+<h3>Coverage</h3>
+<p>Code coverages:</p>
+<ol>
+<li>Statement (line)</li>
+<li>Block</li>
+<li>Conditional expression</li>
+<li>Branch and dicision</li>
+<li>Toggle</li>
+<li>Finite state machine</li>
+</ol>
+<p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">covergroup</span> coverage @(<span class="keyword">posedge</span> clk);</span><br><span class="line">    A_sig: <span class="keyword">coverpoint</span> a &#123;</span><br><span class="line">        <span class="keyword">bins</span> big     = &#123;[<span class="number">0</span>:<span class="number">15</span>]&#125;;        <span class="comment">// 1 state bin</span></span><br><span class="line">        <span class="keyword">bins</span> to_0    = ([<span class="number">1</span>:<span class="number">511</span>]=&gt;<span class="number">0</span>);    <span class="comment">// 1 transition bin</span></span><br><span class="line">        <span class="keyword">bins</span> to_n [] = ([<span class="number">0</span>:<span class="number">6</span>]=&gt;[<span class="number">9</span>:<span class="number">16</span>]); <span class="comment">// 7*8 transition bins</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">ignore_bins</span> no = &#123;<span class="number">4</span>,<span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">illegal_bins</span> fail = &#123;<span class="number">512</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    B_sig: <span class="keyword">coverpoint</span> b;</span><br><span class="line">    AB_cross: <span class="keyword">cross</span> A_sig, B_sig;</span><br><span class="line">    Result: <span class="keyword">coverpoint</span> result &#123;</span><br><span class="line">        <span class="comment">// automatically 512 bins are created with equal portion</span></span><br><span class="line">        option<span class="variable">.auto_bin_max</span> = <span class="number">512</span>;</span><br><span class="line">        option<span class="variable">.at_least</span> = <span class="number">16</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">coverage cov = <span class="keyword">new</span>();</span><br></pre></td></tr></table></figure></p>
+<p>The core utilization must be decided first. Usually the core utilization is higher than 85%;</p>
+<p>$$ core\ size\ of\ standard\ cell=\frac{standard\ cell\ area}{core\ utilization}$$</p>
+<p><em>Core Margins</em> leave the space for power/ground rings.</p>
+<p>$$ die\ size=min(pad_total_width, core_width+core_margin)$$</p>
+<p>It is called <code>max(pad, core)</code> limited design.</p>
+<p><em>Pad fillers</em> provide power to pad and there should be no spacing between pads. Pad fillers are necessary for core limited design.</p>
+<h3>Powerplan</h3>
+<h4>Issues</h4>
+<ol>
+<li>
+<p>Metal migration<br>
+Or electro-migration. Under high current =&gt; open or short due to electron collisions with metal grains.</p>
+<p>Prevention: Sizing power supply lines to ensure chip does not fail.</p>
+<p>Expereince: Make sure current density of power ring &lt; 1mA/µm.</p>
+</li>
+<li>
+<p>IR drop
+Device runs at slower speed if IR drop, causing slower performance, setup/hold violations, less noise margin, and leakage power, is excessive.</p>
+<p>Prevention: Adding stripes.</p>
+</li>
+</ol>
+<h4>Core power ring</h4>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">              | No Wire Group | Wire Group    |</span><br><span class="line">--------------|---------------|---------------|</span><br><span class="line">              |               |               |</span><br><span class="line">              | x–––––––– VDD | x–x–––––– VDD |</span><br><span class="line"> No           | | x–––––– VDD | x–x–––––– VDD |</span><br><span class="line"> Interleaving | | | x–––– gnd | | | x–x–– gnd |</span><br><span class="line">              | | | | x–– gnd | | | x–x–– gnd |</span><br><span class="line">              | | | | |       | | | | |       |</span><br><span class="line">--------------|---------------|---------------|</span><br><span class="line">              |               |               |</span><br><span class="line">              | x–––––––– VDD | x–––x–––– VDD |</span><br><span class="line">              | | x–––––– gnd | | x–+–x–– gnd |</span><br><span class="line"> Interleaving | | | x–––– VDD | x +–x–+–– VDD |</span><br><span class="line">              | | | | x–– gnd | | x–+–x–– gnd |</span><br><span class="line">              | | | | |       | | | | |       |</span><br><span class="line">--------------|---------------|---------------|</span><br></pre></td></tr></table></figure></p>
+<h3>Standard Cell Placement</h3>
+<h3>CTS</h3>
+<h4>Clock tree synthesis</h4>
+<p>Clock problems:</p>
+<ol>
+<li>Heavy clock net loading</li>
+<li>Long clock insertion delay</li>
+<li>Clock skew</li>
+<li>Skew across clocks</li>
+<li>Clock to signal coupling effect</li>
+<li>Power hungry</li>
+<li>Electomigration on clock net</li>
+</ol>
+<h3>Routing</h3>
+<p>Signal integrity (SI) issues:</p>
+<ol>
+<li>Corsstalk</li>
+<li>Charge sharing</li>
+<li>Supply noise</li>
+<li>Leakage</li>
+<li>Propagated noise</li>
+<li>Overshoot</li>
+<li>Under shoot</li>
+</ol>
+<h4>SI deiven route</h4>
+<p>Crosstalk preventions:</p>
+<ol>
+<li>Placement solution
+<ul>
+<li>Insert buffer in lines</li>
+<li>Upsize driver</li>
+<li>Congestion optimization</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li>Routing solution
+<ul>
+<li>Limit length of parallel or reducing nets</li>
+<li>Wider wiring spacing</li>
+<li>Shield special nets</li>
+<li>Layer switching</li>
+</ul>
+</li>
+</ol>
+<h5>Antenna effect</h5>
+<p>In a chip manufacturing process, metal is initially deposited so it covers the entire chip. Then, the unneeded portions of the metal are removed by etching, typically in plasma (charged particles). The exposed metal collect charge from plasma and form voltage potential. If the voltage potential across the gate oxide becomes large enough, the current can damage the gate oxide.</p>
+<p>$$ antenna\ ratio=\frac{area\ of\ process\ antennas\ on\ a\ node}{area\ of\ gates\ to\ node}$$</p>
+<p>Repairments:</p>
+<ul>
+<li>Add jumper</li>
+<li>Add antenna cell (diode)</li>
+<li>Add buffer</li>
+</ul>
+<h2>Lec 12 - APR II</h2>
+<p>LEF defines the elements of an IC process technology and associated library of cell models.</p>
+<ol>
+<li>Technology LEF
+Containing information like placement, routing design rules, and process information for layers.</li>
+<li>Cell library LEF
+Containing the macro and standard cell information for a design.</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html" data-id="cj8bva9b80000ixxfd06k358m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html">評論</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/article/others/htbasic.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    TransEra HTBasic Syntax
+                
+            </div>
+        </a>
+    
+    
+        <a href="/article/verilog/verilog-circuits-design-1-of-2.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Verilog Circuits Design - 1/2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Instrument-Control/">Instrument Control</a></p>
+                            <p class="item-title"><a href="/article/others/htbasic.html" class="title">TransEra HTBasic Syntax</a></p>
+                            <p class="item-date"><time datetime="2017-09-30T16:00:00.000Z" itemprop="datePublished">2017-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/RTL-Design/">RTL Design</a></p>
+                            <p class="item-title"><a href="/article/verilog/verilog-circuits-design-2-of-2.html" class="title">Verilog Circuits Design - 2/2</a></p>
+                            <p class="item-date"><time datetime="2017-09-30T16:00:00.000Z" itemprop="datePublished">2017-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/RTL-Design/">RTL Design</a></p>
+                            <p class="item-title"><a href="/article/verilog/verilog-circuits-design-1-of-2.html" class="title">Verilog Circuits Design - 1/2</a></p>
+                            <p class="item-date"><time datetime="2016-11-08T16:00:00.000Z" itemprop="datePublished">2016-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/RTL-Design/">RTL Design</a></p>
+                            <p class="item-title"><a href="/article/verilog/verilog-combinational-circuits-design.html" class="title">Verilog Combinational Circuits Design</a></p>
+                            <p class="item-date"><time datetime="2016-11-08T16:00:00.000Z" itemprop="datePublished">2016-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Web-Development/">Web Development</a></p>
+                            <p class="item-title"><a href="/article/php/phpunit-installation.html" class="title">PHPUnit (1) 安裝</a></p>
+                            <p class="item-date"><time datetime="2016-11-01T16:00:00.000Z" itemprop="datePublished">2016-11-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Instrument-Control/">Instrument Control</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RTL-Design/">RTL Design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-Development/">Web Development</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/basic/" style="font-size: 14px;">basic</a> <a href="/tags/blade/" style="font-size: 14px;">blade</a> <a href="/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/tags/laravel/" style="font-size: 14px;">laravel</a> <a href="/tags/php/" style="font-size: 14px;">php</a> <a href="/tags/phpunit/" style="font-size: 14px;">phpunit</a> <a href="/tags/verilog/" style="font-size: 14px;">verilog</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">歸檔</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Chih-hung Cheng<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'ukyouz';
+    
+    
+    var disqus_url = 'http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
