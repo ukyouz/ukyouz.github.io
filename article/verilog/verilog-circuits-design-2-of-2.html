@@ -5,32 +5,32 @@
     
     <title>Verilog Circuits Design - 2/2 | zhung&#39;s zone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Lec 8 - Low Power
-Power Dissipation
-$$P_{total} = P_{static} + P_{dynamic}$$
-Static Power: $P_{static}$
-Static power dissipation is caused by leakeage current.
-$$P_{static} = I_{leakage} \times V_{DD}">
+    <meta name="description" content="Course Memo of digital IC design, including following contents:
+
+Low Power
+System Verilog
+Testbed Constraint and Patterns
+APR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Verilog Circuits Design - 2/2">
 <meta property="og:url" content="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html">
 <meta property="og:site_name" content="zhung's zone">
-<meta property="og:description" content="Lec 8 - Low Power
-Power Dissipation
-$$P_{total} = P_{static} + P_{dynamic}$$
-Static Power: $P_{static}$
-Static power dissipation is caused by leakeage current.
-$$P_{static} = I_{leakage} \times V_{DD}">
+<meta property="og:description" content="Course Memo of digital IC design, including following contents:
+
+Low Power
+System Verilog
+Testbed Constraint and Patterns
+APR">
 <meta property="og:image" content="http://ukyouz.github.io/images/verilog/gating_clock.png">
-<meta property="og:updated_time" content="2017-10-03T17:28:38.205Z">
+<meta property="og:updated_time" content="2017-10-23T17:01:56.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Verilog Circuits Design - 2/2">
-<meta name="twitter:description" content="Lec 8 - Low Power
-Power Dissipation
-$$P_{total} = P_{static} + P_{dynamic}$$
-Static Power: $P_{static}$
-Static power dissipation is caused by leakeage current.
-$$P_{static} = I_{leakage} \times V_{DD}">
+<meta name="twitter:description" content="Course Memo of digital IC design, including following contents:
+
+Low Power
+System Verilog
+Testbed Constraint and Patterns
+APR">
 <meta name="twitter:image" content="http://ukyouz.github.io/images/verilog/gating_clock.png">
     
 
@@ -222,7 +222,15 @@ $$P_{static} = I_{leakage} \times V_{DD}">
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2>Lec 8 - Low Power</h2>
+            <p>Course Memo of digital IC design, including following contents:</p>
+<ul>
+<li>Low Power</li>
+<li>System Verilog</li>
+<li>Testbed Constraint and Patterns</li>
+<li>APR</li>
+</ul>
+<p><a id="more"></a></p>
+<h2>Lec 8 - Low Power</h2>
 <h3>Power Dissipation</h3>
 <p>$$P_{total} = P_{static} + P_{dynamic}$$</p>
 <h4>Static Power: $P_{static}$</h4>
@@ -460,7 +468,7 @@ To logic equivalent with dynamic gated clock design, the data gating condition s
 <p>The core utilization must be decided first. Usually the core utilization is higher than 85%;</p>
 <p>$$ core\ size\ of\ standard\ cell=\frac{standard\ cell\ area}{core\ utilization}$$</p>
 <p><em>Core Margins</em> leave the space for power/ground rings.</p>
-<p>$$ die\ size=min(pad_total_width, core_width+core_margin)$$</p>
+<p>$$ die\ size=min(pad\ total\ width, core\ width+core\ margin) $$</p>
 <p>It is called <code>max(pad, core)</code> limited design.</p>
 <p><em>Pad fillers</em> provide power to pad and there should be no spacing between pads. Pad fillers are necessary for core limited design.</p>
 <h3>Powerplan</h3>
@@ -552,7 +560,7 @@ Containing the macro and standard cell information for a design.</li>
 
 </div>
 
-    <a data-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html" data-id="cj8bva9b80000ixxfd06k358m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://ukyouz.github.io/article/verilog/verilog-circuits-design-2-of-2.html" data-id="cj94fth1c000e9exfglivihur" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

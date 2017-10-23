@@ -5,37 +5,19 @@
     
     <title>TransEra HTBasic Syntax | zhung&#39;s zone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Loop Conditions
-While
-123WHILE condition    ...END WHILE
-For
-123FOR X=1 TO N [STEP 1]    ...NEXT X
-If STEP is not specified, default step value is 1.
-Loop
-12345LOOP    ...[EXIT IF condition]    ...END">
+    <meta name="description" content="HTBasic is the languange used by Trans Era, aiming for measurement equipment controlling usages.
+However, it is different from normal programming languages, there are specific syntax and kind of bugs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TransEra HTBasic Syntax">
 <meta property="og:url" content="http://ukyouz.github.io/article/others/htbasic.html">
 <meta property="og:site_name" content="zhung's zone">
-<meta property="og:description" content="Loop Conditions
-While
-123WHILE condition    ...END WHILE
-For
-123FOR X=1 TO N [STEP 1]    ...NEXT X
-If STEP is not specified, default step value is 1.
-Loop
-12345LOOP    ...[EXIT IF condition]    ...END">
-<meta property="og:updated_time" content="2017-09-30T19:25:55.460Z">
+<meta property="og:description" content="HTBasic is the languange used by Trans Era, aiming for measurement equipment controlling usages.
+However, it is different from normal programming languages, there are specific syntax and kind of bugs">
+<meta property="og:updated_time" content="2017-10-23T17:08:22.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TransEra HTBasic Syntax">
-<meta name="twitter:description" content="Loop Conditions
-While
-123WHILE condition    ...END WHILE
-For
-123FOR X=1 TO N [STEP 1]    ...NEXT X
-If STEP is not specified, default step value is 1.
-Loop
-12345LOOP    ...[EXIT IF condition]    ...END">
+<meta name="twitter:description" content="HTBasic is the languange used by Trans Era, aiming for measurement equipment controlling usages.
+However, it is different from normal programming languages, there are specific syntax and kind of bugs">
     
 
     
@@ -226,7 +208,10 @@ Loop
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2>Loop Conditions</h2>
+            <p>HTBasic is the languange used by Trans Era, aiming for measurement equipment controlling usages.</p>
+<p>However, it is different from normal programming languages, there are specific syntax and kind of bugs when you code.</p>
+<p><a id="more"></a></p>
+<h2>Loop Conditions</h2>
 <h3>While</h3>
 <p><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHILE</span> condition</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">WHILE</span></span><br></pre></td></tr></table></figure></p>
 <h3>For</h3>
@@ -238,7 +223,7 @@ Loop
 <h2>Subprogram &amp; Function</h2>
 <p>Subprogram can take parameters and does not return value. Function can also use parameters and return an <code>INTEGER</code> or a <code>STRING</code>.</p>
 <p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">! Main Program</span><br><span class="line">    ...</span><br><span class="line">    Area = FNSquare(Side)</span><br><span class="line">    </span><br><span class="line">    CALL Your_sub_name(@4156, Count, Numbers(*), Out$)</span><br><span class="line">    PRINT FNRepeat_char$(&quot;-&quot;, 50)</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">SUB Your_sub_name(@meter, I, Arr(*), Str$)</span><br><span class="line">    ...</span><br><span class="line">SUBEND</span><br><span class="line"></span><br><span class="line">DEF FNSquare(I)</span><br><span class="line">    RETURN I*I</span><br><span class="line">FNEND</span><br><span class="line"></span><br><span class="line">DEF FNRepeat_char$(C$, I)</span><br><span class="line"></span><br><span class="line">FNEND</span><br></pre></td></tr></table></figure></p>
-<p>Sometimes <code>syntax error</code> appears even if there is no syntax error, when this happen, save your file first.</p>
+<p>Sometimes <code>syntax error</code> appears even if there is no syntax error, when this happen, copy all of your codes to a new file and save. That's it.</p>
 
         
         </div>
@@ -249,7 +234,7 @@ Loop
 
 </div>
 
-    <a data-url="http://ukyouz.github.io/article/others/htbasic.html" data-id="cj8bv4voq0006i3xftsxgdmvd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://ukyouz.github.io/article/others/htbasic.html" data-id="cj94fth1300069exf8axc6891" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
